@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict MD5 Result</title>
+</head>
+<body>
+    <h1>Predict MD5 Result</h1>
+    <form method="POST">
+        <label for="md5">MD5:</label><br>
+        <input type="text" id="md5" name="md5"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if predicted_result %}
+    <p>Predicted result: {{ predicted_result }}</p>
+    <form method="POST" action="/save">
+        <input type="hidden" id="md5" name="md5" value="{{ md5 }}">
+        <label for="actual_result">Actual Result (Tài/Xỉu):</label><br>
+        <select id="actual_result" name="actual_result">
+            <option value="Tài">Tài</option>
+            <option value="Xỉu">Xỉu</option>
+        </select><br><br>
+        <input type="submit" value="Save">
+    </form>
+    {% endif %}
+</body>
+</html>
